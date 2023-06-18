@@ -1,0 +1,44 @@
+﻿
+@page "/eightqueens"
+@inherits EightQueensBase
+
+<SolverLayout
+    @ref="solverControl"
+    Solver="@this"
+    SelectedNavIndex="3" >
+
+    <ParameterSection>
+
+        <h2>参数</h2>
+
+        <div class="parameters-block">
+            <ParameterSlider Label="皇后数量" @bind-Value="@numQueensSetting" Min="4" Max="16"/>
+            <Button class="btn-sm" @onclick="@Update">重置</Button>
+        </div>
+
+    </ParameterSection>
+
+    <ProblemSection>
+        <p>八皇后问题</p>
+        <blockquote>
+            <p>
+                怎样才能在 8 x 8 的棋盘上排列八个皇后，使得它们都不是共享相同的行、列或对角线？
+            </p>
+        </blockquote>
+
+        <h2>方法</h2>
+        <p>打乱皇后的在行列中的排列，并判断是否符合对角线原则</p>
+       <p>适度函数计算的是符合要求的皇后的数量</p>
+
+       <h2>测试的性能表现</h2>
+       <p>在最高8个皇后的情况下（也就是8x8），往往能得到最终的解</p>
+
+    </ProblemSection>
+
+    <OutputSection>
+
+        <ChessBoard Queens="@solution" />
+
+    </OutputSection>
+
+</SolverLayout>

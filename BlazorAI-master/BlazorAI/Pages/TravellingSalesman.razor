@@ -1,0 +1,50 @@
+﻿@page "/"
+@page "/travellingsalesman"
+@inherits TravellingSalesmanBase
+
+<SolverLayout
+    @ref="solverLayout"
+    Solver="@this"
+    SelectedNavIndex="1" >
+    
+    <ParameterSection>
+
+        <h2>参数</h2>
+
+        <div class="parameters-block">
+            <ParameterSlider Label="城市数量" @bind-Value="@numPointsSetting" Min="5" Max="50"/>
+            <ParameterSlider Label="随机数种子（用于生成城市距离）" @bind-Value="@randomSeedSetting" Min="0" Max="255"/>
+
+            <Button class="btn-sm" @onclick="@Update">重置</Button>
+        </div>
+
+    </ParameterSection>
+
+    <ProblemSection>
+
+        <p>旅行商问题</p>
+        <blockquote>
+            <p>旅行商问题（Traveling Salesman Problem，TSP）是一种经典的组合优化问题，
+                它的目标是找到一条路径，使得旅行商能够访问一组城市并返回起始城市，同时使得总旅行距离最短。
+                具体来说，给定一组城市和它们之间的距离或成本矩阵，旅行商问题要求找到一条最短路径，
+                使得旅行商从起始城市出发，途经所有城市恰好一次，最后回到起始城市。</p>
+        </blockquote>
+
+        <h2>方法</h2>
+        <p>我们从一个解决方案开始，该解决方案只需按生成顺序访问每个点。</p>
+        <p>然后我们使用有序交叉和反向序列突变来生成访问每个点一次的不同路线。</p>
+        <p>适应度函数是从原点（标有双圆圈）通过所有点并返回原点的总距离。</p>
+
+        <h2>性能表现</h2>
+        <p>对于NP-Hard问题来说，这种解决方案是可行的。</p>
+    </ProblemSection>
+
+    <OutputSection>
+
+        <TravellingSalesmanGrid Path="@path" Distance="@distance" Width="@GridWidth" Height="@GridHeight" />
+
+    </OutputSection>
+
+</SolverLayout>
+
+

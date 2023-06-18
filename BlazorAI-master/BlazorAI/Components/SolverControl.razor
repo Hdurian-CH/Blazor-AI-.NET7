@@ -1,0 +1,74 @@
+﻿
+<div class="solver-control" id="solver-anchor">
+   
+<Container Fluid="false">
+    <Row>
+        <Column style="padding:0;" ColumnSize="ColumnSize.IsFull.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+        
+            @* TODO: Make Rewind and FastForward buttons do something! *@
+            <div class="solver-button-group">
+                <Button class="btn-round btn-round-small" Disabled="true">
+                    <Blazorise.Icon Name="MaterialIcons.FastRewind"/>
+                </Button>
+
+                <Button @onclick="@ToggleSolve" class="btn-round" >
+                    <Blazorise.Icon Name="@PlayIcon"/>
+                </Button>
+                
+                <Button class="btn-round btn-round-small" Disabled="true">
+                    <Blazorise.Icon Name="MaterialIcons.FastForward"/>
+                </Button>
+
+                <Button class="btn-round btn-round-small d-sm-none d-block"
+                        style="position: absolute; right: 50px; bottom: 10px; z-index: 1000;"
+                        @onclick="@ToggleSettings">
+                    <Blazorise.Icon Name="@SettingsIcon"/>
+                </Button>
+
+                 <Button class="btn-round btn-round-small d-sm-none d-block"
+                         style="position: absolute; right: 1px; bottom: 10px; z-index: 1000;"
+                         onclick="document.getElementById('problem-anchor').scrollIntoView({behavior:'smooth'})">
+                    <Blazorise.Icon Name="MaterialIcons.HelpOutline"/>
+                </Button>
+            </div>
+
+        </Column>
+
+        <Column class="@selectorClass" ColumnSize="ColumnSize.Is6.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+            <SelectControl
+                Label="最大代际数"
+                Choices="@generationChoices"
+                @bind-Value="@SolverParameters.Generations" />
+        </Column>
+
+        <Column class="@selectorClass" ColumnSize="ColumnSize.Is6.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+            <SelectControl
+                Label="种群大小"
+                Choices="@populationChoices"
+                @bind-Value="@SolverParameters.Population" />
+        </Column>
+
+        <Column class="@selectorClass" ColumnSize="ColumnSize.Is6.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+            <SelectControl
+                Label="选择因子"
+                Choices="@selectionChoices"
+                @bind-Value="@SolverParameters.Selection" />
+        </Column>
+
+        <Column class="@selectorClass" ColumnSize="ColumnSize.Is6.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+            <SelectControl
+                Label="交叉概率 %"
+                Choices="@crossoverChoices"
+                @bind-Value="@SolverParameters.CrossoverProbability" />
+        </Column>
+
+        <Column class="@selectorClass" ColumnSize="ColumnSize.Is6.OnMobile.Is6.OnTablet.Is4.OnDesktop.Is2.OnWidescreen" >
+            <SelectControl
+                Label="突变概率 %"
+                Choices="@mutationChoices"
+                @bind-Value="@SolverParameters.MutationProbability" />
+        </Column>
+    </Row>
+</Container>
+
+</div>
