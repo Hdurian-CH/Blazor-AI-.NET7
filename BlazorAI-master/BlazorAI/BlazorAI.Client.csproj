@@ -17,12 +17,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\material\" />
-    <Folder Include="wwwroot\images\footer\" />
     <Folder Include="wwwroot\images\nav\" />
     <Folder Include="wwwroot\images\opengraph\" />
-    <Folder Include="wwwroot\images\problems\fivehouses\" />
     <Folder Include="wwwroot\images\problems\eightqueens\" />
-    <Folder Include="wwwroot\images\problems\password\" />
     <Folder Include="wwwroot\images\problems\travellingsalesman\" />
     <Folder Include="wwwroot\js\material\" />
   </ItemGroup>
